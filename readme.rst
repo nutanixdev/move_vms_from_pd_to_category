@@ -15,7 +15,7 @@ Usage
 -----
 
 - Clone repo to your local machine
-- Setup a virtual environment (stringly recommended):
+- Setup a virtual environment (strongly recommended):
 
    .. code-block:: python
 
