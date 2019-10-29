@@ -15,12 +15,16 @@ Usage
 -----
 
 - Clone repo to your local machine
-- Setup a virtual environment (strongly recommended):
+- Setup a virtual environment on Linux or Mac (strongly recommended):
 
    .. code-block:: python
 
       python3.7 -m venv venv
       . venv/bin/activate
+
+- Setup a virtual environment on Windows (strongly recommended):
+
+   .. note:: See https://docs.python.org/3.7/library/venv.html for Windows instructions
 
 - Install the dependencies:
 
