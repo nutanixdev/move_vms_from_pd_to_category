@@ -185,14 +185,16 @@ try:
     cluster_ip = json_data["cluster_ip"]
     protection_domain = json_data["pd"]
     user = json_data["username"]
-    print(f"username {user}")
+    print(f'\nUsername: {user}')
+    print(f'PD name: {protection_domain}')
     # get the cluster password
     print(f"\nConnecting to {cluster_ip} ...")
     cluster_password = getpass.getpass(
         prompt="Please enter your cluster password: ", stream=None
     )
-    print(f"password {cluster_password}")
-    print(f"https://{cluster_ip}:9440/api/nutanix/v2.0/protection_domains/{protection_domain}")
+    # just commented this for security reasons
+    # print(f"password {cluster_password}")
+    print(f'Request URI: https://{cluster_ip}:9440/api/nutanix/v2.0/protection_domains/{protection_domain}\n')
     # setup the parameters for the initial request
     parameters = RequestParameters(
         uri=f"https://{cluster_ip}:9440/api/nutanix/v2.0/protection_domains/{protection_domain}",
@@ -215,9 +217,8 @@ try:
     for d in vmlist:
         vminpd = d['vm_name']
         vmnames.append(vminpd)
+        print(f'VM found: {vminpd} (UUID: {d["vm_id"]})')
 
-    print(vmnames)
-    sys.exit()
 except Exception as ex:
     print(ex)
 finally:
