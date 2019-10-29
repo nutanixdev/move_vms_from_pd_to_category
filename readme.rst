@@ -24,7 +24,7 @@ Usage
 
 - Setup a virtual environment on Windows (strongly recommended):
 
-   .. note:: See https://docs.python.org/3.7/library/venv.html for Windows instructions
+   .. note:: See https://docs.python.org/3/library/venv.html for Windows instructions
 
 - Install the dependencies:
 
