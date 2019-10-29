@@ -9,6 +9,7 @@ Requirements
 ------------
 
 - Python >=3.6 (lower versions will NOT work)
+- pip3 (for dependencies installation)
 
 -----
 Usage
