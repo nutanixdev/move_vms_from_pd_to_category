@@ -128,7 +128,7 @@ class RESTClient:
                     self.params.uri,
                     headers=headers,
                     auth=HTTPBasicAuth(username, password),
-                    timeout=30,
+                    timeout=10,
                     verify=False
                 )
             elif self.params.method == 'post' or self.params.method == 'put':
@@ -137,7 +137,7 @@ class RESTClient:
                     self.params.uri,
                     headers=headers,
                     auth=HTTPBasicAuth(username, password),
-                    timeout=30,
+                    timeout=10,
                     verify=False,
                     data=self.params.payload
                 )
@@ -149,7 +149,7 @@ class RESTClient:
         except requests.exceptions.ConnectTimeout:
             # timeout while connecting to the specified IP address or FQDN
             response.code = -99
-            response.message = f"Connection has timed out. {username} {password}"
+            response.message = f"Connection has timed out."
             response.details = "Exception: requests.exceptions.ConnectTimeout"
         except urllib3.exceptions.ConnectTimeoutError:
             # timeout while connecting to the specified IP address or FQDN
@@ -235,10 +235,6 @@ pc_password = getpass.getpass(
     prompt="Please enter your Prism Central password: ", stream=None
 )
 
-##############################################
-# see if there are any entities to work with #
-##############################################
-
 print(f'\nGetting entities that belong to PD named {protection_domain} ...')
 # setup the parameters for the initial request
 parameters = RequestParameters(
@@ -253,10 +249,21 @@ rest_client = RESTClient(parameters)
 get_pd_entities_response = rest_client.send_request()
 
 """
-make sure we aren't going to send unnecessary API requests
-and cause unnecessary load on the cluster/PC instance
-i.e. if the specified PD has no entities there's no point going any further
+check that the first request was successful
+if it wasn't, there's no point continuing as it means later requests will also fail
 """
+
+if get_pd_entities_response.code == -99:
+    print(get_pd_entities_response.message)
+    print(get_pd_entities_response.details)
+    sys.exit()
+
+##############################################
+# see if there are any entities to work with #
+# if there aren't, there's no point going    #
+# any further                                #
+##############################################
+
 vm_count = len(get_pd_entities_response.json['vms'])
 if vm_count == 0:
     print(f'PD {protection_domain} has no existing entities.  Nothing to do.')
