@@ -56,4 +56,4 @@ Screenshot
 
 An example of the script running is shown below.
 
-![Script usage example](screenshot.png "Script usage example")
+.. figure:: ./screenshot.png
