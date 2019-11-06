@@ -1,14 +1,18 @@
-==========
-listpds.py
-==========
+==========================================
+Move VM from Protection Domain to Category
+==========================================
 
-Take the included **listparms.json** file, read the parameters from it, connect to the specified cluster and list VMs that belong to the specified Protection Domain.
+- Use included params.json as API request parameters
+- List all VMs that are entities within an existing Protection Domain
+- Remove those VMs from an existing Protection Domain
+- Assign the same VMs to an existing category
 
---------------
-Important Note
---------------
+---------------
+Important Notes
+---------------
 
-This script has been written for demo purposes only.  *Please* make sure to add appropriate error-checking and exception handling before using it in production.
+- This script has been written for demo purposes only.  *Please* make sure to add appropriate error-checking and exception handling before using it in production.
+- For use in production it would advisable to add checks for making the PD and Category exist.
 
 ------------
 Requirements
@@ -45,3 +49,11 @@ Usage
    .. code-block:: python
 
       python3.8 listpds.py listparms.json
+
+----------
+Screenshot
+----------
+
+An example of the script running is shown below.
+
+![Script usage example](screenshot.png "Script usage example")
