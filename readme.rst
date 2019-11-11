@@ -44,11 +44,12 @@ Usage
 
       pip3 install -e .
 
+- Adjust values in **params.json** to match your Prism Element, Prism Central, Protection Domain and category settings
 - Run the script:
 
    .. code-block:: python
 
-      python3.8 listpds.py listparms.json
+      python3.8 move_vms.py params.json
 
 ----------
 Screenshot

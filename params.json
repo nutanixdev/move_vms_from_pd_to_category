@@ -1,1 +1,1 @@
-{"cluster_ip":"10.133.16.50","pc_ip":"10.133.16.228","username":"admin","pd":"pd_dwayne","category":"category_name_dwayne:category_value_dwayne"}
+{"cluster_ip":"10.0.0.1","pc_ip":"10.0.0.2","username":"admin","pd":"pd_demo","category":"category_name_demo:category_value_demo"}
